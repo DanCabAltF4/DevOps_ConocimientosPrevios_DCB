@@ -17,16 +17,35 @@ public class DevOps_ConocimientosPrevios_DCB {
 
     public static void main(String[] args) {
         List<Tarea> tareas = new ArrayList<>();
-
-        switch (menu()) {
-            //Registrar
-            case 1 -> {
-                addTarea(tareas);
+        boolean run = true;
+        do {
+            switch (menu()) {
+                //Registrar
+                case 1 -> {
+                    addTarea(tareas);
+                }
+                case 2 -> {
+                    System.out.println("Introduzca el id de la tarea a completar");
+                }
+                //listar
+                case 3 -> {
+                    printTareas(tareas);
+                }
+                case 5 -> {
+                    run = false;
+                }
+                default -> {
+                    System.out.println("Opcion invalida");
+                }
             }
 
-            default -> {
-                System.out.println("Opcion invalida");
-            }
+        } while (run);
+
+    }
+
+    private static void printTareas(List<Tarea> tareas) {
+        for (Tarea tarea : tareas) {
+            System.out.println(tarea);
         }
     }
 
@@ -82,4 +101,5 @@ public class DevOps_ConocimientosPrevios_DCB {
         return id;
     }
 
+    private static voi
 }
