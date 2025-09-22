@@ -3,7 +3,10 @@
  */
 package com.mycompany.devops_conocimientosprevios_dcb;
 
+import java.util.ArrayList;
 import java.util.InputMismatchException;
+import java.util.Iterator;
+import java.util.List;
 import java.util.Scanner;
 
 /**
@@ -13,14 +16,17 @@ import java.util.Scanner;
 public class DevOps_ConocimientosPrevios_DCB {
 
     public static void main(String[] args) {
+        List<Tarea> tareas = new ArrayList<>();
 
         switch (menu()) {
             //Registrar
-            case 1 ->{
-                
+            case 1 -> {
+
             }
-            
-            default -> {System.out.println("Opcion invalida");}
+
+            default -> {
+                System.out.println("Opcion invalida");
+            }
         }
     }
 
@@ -53,4 +59,27 @@ public class DevOps_ConocimientosPrevios_DCB {
         } while (!valido);
         return integer;
     }
+
+    private static void addTarea(List<Tarea> tareas) {
+        System.out.println("Introduzca la descripcion de la tarea");
+        String desc = new Scanner(System.in).nextLine();
+        tareas.add(new Tarea(newTareaId(tareas), desc, false));
+    }
+
+    //obtiene el primer id disponible para una nueva tarea
+    private static int newTareaId(List<Tarea> tareas) {
+        int id = 1; //Si no hay ninguna tarea empezará por el id 1
+        Iterator<Tarea> it = tareas.iterator();
+        boolean found = false;
+        while (it.hasNext() && !found) {
+            Tarea next = it.next();
+            if (next.getId() == id) {
+                id += 1;
+            } else {
+                found = true;
+            }
+        }
+        return id;
+    }
+
 }
