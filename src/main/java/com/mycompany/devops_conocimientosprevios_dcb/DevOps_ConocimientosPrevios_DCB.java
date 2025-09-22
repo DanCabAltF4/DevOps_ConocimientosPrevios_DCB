@@ -21,7 +21,7 @@ public class DevOps_ConocimientosPrevios_DCB {
         switch (menu()) {
             //Registrar
             case 1 -> {
-
+                addTarea(tareas);
             }
 
             default -> {
